@@ -8,17 +8,17 @@ ser.write(W_buf_logoin.encode())
 ser.flushInput()
 data = ""
 try:
-        while True:
-		while ser.inWaiting() > 0:
-			data += (ser.read(ser.inWaiting())).decode()
-			time.sleep(0.0001)
-		if data != "":
-			print(data)
-			if "CREG" in data:
-				print("call phone")
-				ser.write(W_buf_phone.encode())
-			data = ""
+    while True:
+        while ser.inWaiting() > 0:
+            data += (ser.read(ser.inWaiting())).decode()
+            time.sleep(0.0001)
+        if data != "":
+            print(data)
+            if "CREG" in data:
+                print("call phone")
+                ser.write(W_buf_phone.encode())
+            data = ""
 except KeyboardInterrupt:
-	if ser != None:
-		ser.close()
+    if ser != None:
+        ser.close()
 		
